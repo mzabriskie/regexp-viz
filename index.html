@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RegExp Visualizer</title>
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+	</head>
+	<body>
+		<div id="toolbar">
+			<input type="checkbox" id="matchall"/> <label for="matchall">Match All</label>
+			<input type="checkbox" id="matchcase"/> <label for="matchcase">Match Case</label>
+			<input type="checkbox" id="multiline"/> <label for="multiline">Multiline</label>
+			<span id="message"></span>
+		</div>
+		<div id="content">
+			<div id="regexp" contenteditable="true" placeholder="Enter a regular expression here..."></div>
+			<div id="spacer"></div>
+			<div id="result" contenteditable="true" placeholder="Enter text to evaluate here..."></div>
+            <!--<textarea id="mirror" placeholder="Enter text to evaluate here..."></textarea>-->
+		</div>
+
+        <script type="text/javascript" src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22mootools%22%2C%22version%22%3A%221.4.1%22%7D%5D%7D"></script>
+        <script type="text/javascript" src="regexp.js"></script>
+	</body>
+</html>
