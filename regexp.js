@@ -74,8 +74,10 @@
             var value = Config.read('result');
 
             try {
-                var rx = new RegExp('(' + Config.read('regexp') + ')', modifiers);
-                value = value.replace(rx, '<mark>$1</mark>');
+                if (Config.read('regexp').trim().length > 0) {
+                    var rx = new RegExp('(' + Config.read('regexp') + ')', modifiers);
+                    value = value.replace(rx, '<mark>$1</mark>');
+                }
                 this.setMessage(this.getMatches(value), false);
             } catch (e) {
                 this.setMessage(e.message, true);
