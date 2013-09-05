@@ -21,7 +21,7 @@ html, body {
 }
 
 #regexp, #result, #mirror {
-    font-family:"Courier",monospace !important;
+    font-family:"Courier",monospace;
     font-size:16px;
     border:5px solid #b0b0b0;
     border-radius:5px;
@@ -33,7 +33,6 @@ html, body {
 
     margin:-55px -20px;
     padding:5px;
-    height:50%;
     width:100%;
 
     position:relative;
@@ -46,10 +45,12 @@ html, body {
 
 #regexp {
     margin-bottom:0;
+    height:15%;
 }
 
 #result, #mirror {
     margin-top:0;
+    height:85%;
 }
 
 #result {
