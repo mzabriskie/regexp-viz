@@ -23,6 +23,8 @@
 
     var App = new new Class({
         initialize: function () {
+            document.html.addClass(Browser.name);
+
             // Hookup events
             window.addEvent('resize', this.handleResize.bind(this));
             $('content').addEvent('keyup:relay(#regexp, #result)', this.handleKeyUp.bind(this));
@@ -46,7 +48,10 @@
         },
 
         scale: function () {
-            result.setStyle('top', ((-result.offsetHeight) + 55) + 'px');
+            if (Browser.name === 'firefox' ||
+                Browser.name === 'ie') {
+                result.setStyle('height', mirror.offsetHeight + 'px');
+            }
         },
 
         process: function (force) {
@@ -74,7 +79,8 @@
             var value = Config.read('result');
 
             try {
-                if (Config.read('regexp').trim().length > 0) {
+                if (Config.read('regexp').trim().length > 0 &&
+                    Config.read('result').trim().length > 0) {
                     var rx = new RegExp('(' + Config.read('regexp') + ')', modifiers);
                     value = value.replace(rx, '<mark>$1</mark>');
                 }

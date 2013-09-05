@@ -9,11 +9,14 @@ html, body {
 
 * {
     color:#222;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
 }
 
 #content {
     position:absolute;
-    top:116px;
+    top:61px;
     right:15px;
     bottom:15px;
     left:15px;
@@ -31,12 +34,11 @@ html, body {
     cursor:text;
     line-height:1.5;
 
-    margin:-55px -20px;
     padding:5px;
-    width:100%;
 
-    position:relative;
-    left:20px;
+    position:absolute;
+    left:0;
+    right:0;
 
     overflow-y:auto;
     overflow-x:hidden;
@@ -44,30 +46,48 @@ html, body {
 }
 
 #regexp {
-    margin-bottom:0;
-    height:15%;
+    height:44px;
+    top:0;
 }
 
-#result, #mirror {
-    margin-top:0;
-    height:85%;
+#mirror {
+    color:#ffffff;
+    top:59px;
+    bottom:2px;
 }
 
 #result {
     background:transparent;
+    top:57px;
+    bottom:0;
+}
+
+.firefox #mirror {
+    top:59px;
+    right:0;
+    bottom:0;
+    left:0;
+}
+.firefox #result {
+    top:58px;
+}
+.firefox textarea {
+    padding:5px 4px !important;
+}
+
+.ie #result {
+    top:59px;
 }
 
 textarea {
     resize:none;
+    width:100%;
+    display:block;
 }
 
 #regexp:focus, #result:focus, #mirror:focus {
     border-color:#5ab0fb;
     outline:none;
-}
-
-#spacer {
-    height:15px;
 }
 
 #message {
