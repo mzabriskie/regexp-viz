@@ -4,6 +4,7 @@ html, body {
     text-align:left;
     height:100%;
     font-family:"Lucida Grande","Tahoma","Verdana","Arial",sans-serif;
+    overflow:hidden;
 }
 
 * {
@@ -19,7 +20,7 @@ html, body {
     padding-right:20px;
 }
 
-#regexp, #result {
+#regexp, #result, #mirror {
     font-family:"Courier",monospace !important;
     font-size:16px;
     border:5px solid #b0b0b0;
@@ -47,16 +48,19 @@ html, body {
     margin-bottom:0;
 }
 
-#result {
+#result, #mirror {
     margin-top:0;
 }
 
-#regexp.placeholder,
-#result.placeholder {
-    color:#6d6d6d;
+#result {
+    background:transparent;
 }
 
-#regexp:focus, #result:focus {
+textarea {
+    resize:none;
+}
+
+#regexp:focus, #result:focus, #mirror:focus {
     border-color:#5ab0fb;
     outline:none;
 }
@@ -66,7 +70,10 @@ html, body {
 }
 
 #message {
-    float:right;
+    max-width:400px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
 #message.error {
