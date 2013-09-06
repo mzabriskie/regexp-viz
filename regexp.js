@@ -81,16 +81,35 @@
             try {
                 if (Config.read('regexp').trim().length > 0 &&
                     Config.read('result').trim().length > 0) {
-                    var rx = new RegExp('(' + Config.read('regexp') + ')', modifiers);
-                    value = value.replace(rx, '<mark>$1</mark>');
+                    var rx = new RegExp(Config.read('regexp'), modifiers),
+                        count = 0;
+                    value = value.replace(rx, function (result) {
+                        count++;
+                        var offset = arguments[arguments.length - 1],
+                            index = 1;
+
+                        for (var i=1,l=arguments.length - 2; i<l; i++) {
+                            if (!arguments[i]) continue; // ignore empty strings, or undefined
+                            offset = result.indexOf(arguments[i], offset);
+                            result = this.mark(result, arguments[i], index++, offset);
+                            offset += arguments[i].length + 24; // 24 is the length of <mark class="m1">...</mark>
+                        }
+                        return result;
+                    }.bind(this));
                 }
-                this.setMessage(this.getMatches(value), false);
+                this.log((count === 0 ? 'No' : count) + ' Match' + (count === 1 ? '' : 'es') + ' Found');
             } catch (e) {
-                this.setMessage(e.message, true);
+                this.log(e);
             }
 
-            // Set value restoring new lines
-            mirror.set('html', value.replace(/\n/g, '<br>'));
+            // Set value restoring new lines and spaces
+            mirror.set('html', value.replace(/\n/g, '<br/>').replace(/(  )/g, '&nbsp;&nbsp;'));
+        },
+
+        mark: function (haystack, needle, index, offset) {
+            return haystack.substring(0, offset) +
+                    '<mark class="m' + index + '">' + needle + '</mark>' +
+                    haystack.substring(offset + needle.length);
         },
 
         modified: function () {
@@ -101,21 +120,9 @@
                     multiline.get('checked') == (Config.read('multiline') == 'true'));
         },
 
-        getMatches: function (value) {
-            var matches = '';
-
-            if (value && value.trim().length > 0) {
-                var tmp = value.match(/<mark>/g),
-                    len = tmp === null ? 0 : tmp.length;
-                matches = (len === 0 ? 'No' : len) + ' Match' + (len === 1 ? '' : 'es') + ' Found';
-            }
-
-            return matches;
-        },
-
-        setMessage: function (msg, error) {
-            message.set('text', msg);
-            message.toggleClass('error', error);
+        log: function (msg) {
+            message.set('text', msg && msg.message ? msg.message : msg);
+            message.toggleClass('error', !!(msg && msg.message));
         },
 
         handleKeyUp: function () {

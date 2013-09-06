@@ -109,11 +109,64 @@ label {
 }
 
 mark {
-    background-color:#cceeff;
-    border:1px solid #99ddff;
     border-radius:3px;
     display:inline;
     margin:-1px;
+    border:1px solid;
+}
+
+mark.m1 {
+    color:#cce5ff;
+    background-color:#cce5ff;
+    border-color:#99ccff;
+}
+
+mark.m2 {
+    color:#ffcccc;
+    background-color:#ffcccc;
+    border-color:#ff9999;
+}
+
+mark.m3 {
+    color:#fff6cc;
+    background-color:#fff6cc;
+    border-color:#ffee99;
+}
+
+mark.m4 {
+    color:#e5ccff;
+    background-color:#e5ccff;
+    border-color:#cc99ff;
+}
+
+mark.m5 {
+    color:#ffe6cc;
+    background-color:#ffe6cc;
+    border-color:#ffcc99;
+}
+
+mark.m6 {
+    color:#ccffcc;
+    background-color:#ccffcc;
+    border-color:#99ff99;
+}
+
+mark.m7 {
+    color:#ccffff;
+    background-color:#ccffff;
+    border-color:#99ffff;
+}
+
+mark.m8 {
+    color:#ffccff;
+    background-color:#ffccff;
+    border-color:#ff99ff;
+}
+
+mark.m9 {
+    color:#ccccff;
+    background-color:#ccccff;
+    border-color:#9999ff;
 }
 
 #toolbar {
