@@ -51,7 +51,6 @@ html, body {
 }
 
 #mirror {
-    color:#ffffff;
     top:59px;
     bottom:2px;
 }
@@ -77,6 +76,10 @@ html, body {
 
 .ie #result {
     top:59px;
+}
+
+#mirror, mark {
+    color:#ffffff;
 }
 
 textarea {
