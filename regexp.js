@@ -91,9 +91,6 @@
 
             // Set value restoring new lines
             mirror.set('html', value.replace(/\n/g, '<br>'));
-
-            // Save configuration
-            Config.save();
         },
 
         modified: function () {
