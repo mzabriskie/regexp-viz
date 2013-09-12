@@ -206,7 +206,7 @@ mark.m9 {
         color-stop(1, rgb(227,227,227))
     );
 
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#e3e3e3'));
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#e3e3e3');
     -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#f5f5f5, endColorstr=#e3e3e3);
     *zoom:1;
 }
