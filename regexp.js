@@ -81,9 +81,17 @@
             try {
                 if (Config.read('regexp').trim().length > 0 &&
                     Config.read('result').trim().length > 0) {
-                    var rx = new RegExp(Config.read('regexp'), modifiers),
+
+                    var rx = Config.read('regexp'),
                         count = 0;
-                    value = value.replace(rx, function (result) {
+
+                    // Add grouping for simple expressions so that matches are highlighted
+                    if (rx.indexOf('(') < 0 && rx.indexOf(')') < 0) {
+                        rx = '(' + rx + ')';
+                    }
+
+                    // Highlight matches
+                    value = value.replace(new RegExp(rx, modifiers), function (result) {
                         count++;
                         var offset = arguments[arguments.length - 1],
                             index = 1;
@@ -103,7 +111,7 @@
             }
 
             // Set value restoring new lines and spaces
-            mirror.set('html', value.replace(/\n/g, '<br/>').replace(/(  )/g, '&nbsp;&nbsp;'));
+            mirror.set('html', value.replace(/\n/g, '<br/>').replace(/^ /, '&nbsp;').replace(/  /g, '&nbsp;&nbsp;'));
         },
 
         mark: function (haystack, needle, index, offset) {
