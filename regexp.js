@@ -79,11 +79,12 @@
             var value = Config.read('result');
 
             try {
+                var count = 0;
+                
                 if (Config.read('regexp').trim().length > 0 &&
                     Config.read('result').trim().length > 0) {
 
-                    var rx = Config.read('regexp'),
-                        count = 0;
+                    var rx = Config.read('regexp');
 
                     // Add grouping for simple expressions so that matches are highlighted
                     if (rx.indexOf('(') < 0 && rx.indexOf(')') < 0) {
