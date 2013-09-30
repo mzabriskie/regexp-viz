@@ -27,6 +27,7 @@
 
             // Hookup events
             window.addEvent('resize', this.handleResize.bind(this));
+            result.addEvent('scroll', this.handleScroll.bind(this));
             $('content').addEvent('keyup:relay(#regexp, #result)', this.handleKeyUp.bind(this));
             $('toolbar').addEvent('click:relay(input[type=checkbox])', this.handleClick.bind(this));
 
@@ -144,6 +145,11 @@
 
         handleResize: function () {
             this.scale();
+        },
+
+        handleScroll: function () {
+            mirror.scrollTop = result.scrollTop;
+            mirror.scrollLeft = result.scrollLeft;
         }
     });
 })(document.id);

@@ -53,6 +53,7 @@ html, body {
 #mirror {
     top:59px;
     bottom:2px;
+    padding-bottom:30px;
 }
 
 #result {
