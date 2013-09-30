@@ -7,6 +7,12 @@
         multiline = $('multiline'),
         message = $('message');
 
+    function encodeHtml(html) {
+        var div = new Element('div');
+        div.set('text', html);
+        return div.get('html');
+    }
+
     var Config = new new Class({
         save: function () {
             localStorage.setItem('regexp', regexp.get('value'));
@@ -77,7 +83,7 @@
             }
 
             // Get value removing HTML tags and preserving new lines
-            var value = Config.read('result');
+            var value = encodeHtml(Config.read('result'));
 
             try {
                 var count = 0;
@@ -93,7 +99,7 @@
                     }
 
                     // Highlight matches
-                    value = value.replace(new RegExp(rx, modifiers), function (result) {
+                    value = value.replace(new RegExp(encodeHtml(rx), modifiers), function (result) {
                         count++;
                         var offset = arguments[arguments.length - 1],
                             index = 1;
