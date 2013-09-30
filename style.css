@@ -18,7 +18,7 @@ html, body {
     position:absolute;
     top:61px;
     right:15px;
-    bottom:15px;
+    bottom:35px;
     left:15px;
     padding-right:20px;
 }
@@ -217,4 +217,13 @@ mark.m9 {
 }
 #toolbar span {
     float:right;
+}
+
+#github {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    text-align:center;
+    padding:5px;
 }
