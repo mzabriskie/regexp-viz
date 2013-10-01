@@ -54,6 +54,7 @@ html, body {
     top:59px;
     bottom:2px;
     padding-bottom:30px;
+    overflow:hidden;
 }
 
 #result {
@@ -114,6 +115,12 @@ mark {
     display:inline;
     margin:-1px;
     border:1px solid;
+}
+
+mark.m0 {
+    color:#ececec;
+    background-color:#ececec;
+    border-color:#d5d5d5;
 }
 
 mark.m1 {

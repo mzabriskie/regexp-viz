@@ -61,6 +61,11 @@
             }
         },
 
+        adjust: function () {
+            mirror.scrollTop = result.scrollTop;
+            mirror.scrollLeft = result.scrollLeft;
+        },
+
         process: function (force) {
             // Don't proceed if nothing has changed
             if (!force && !this.modified()) {
@@ -101,9 +106,14 @@
                     // Highlight matches
                     value = value.replace(new RegExp(encodeHtml(rx), modifiers), function (result) {
                         count++;
-                        var offset = arguments[arguments.length - 1],
+                        var offset = 0,
                             index = 1;
 
+                        // Highlight the entire result
+                        result = this.mark(result, arguments[0], 0, 0);
+                        offset = 17; // 17 is the length of <mark class="m0">
+
+                        // Highlight each grouping
                         for (var i=1,l=arguments.length - 2; i<l; i++) {
                             if (!arguments[i]) continue; // ignore empty strings, or undefined
                             offset = result.indexOf(arguments[i], offset);
@@ -143,6 +153,7 @@
 
         handleKeyUp: function () {
             this.process();
+            this.adjust();
         },
 
         handleClick: function () {
@@ -154,8 +165,7 @@
         },
 
         handleScroll: function () {
-            mirror.scrollTop = result.scrollTop;
-            mirror.scrollLeft = result.scrollLeft;
+            this.adjust();
         }
     });
 })(document.id);
