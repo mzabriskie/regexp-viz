@@ -98,11 +98,6 @@
 
                     var rx = Config.read('regexp');
 
-                    // Add grouping for simple expressions so that matches are highlighted
-                    if (rx.indexOf('(') < 0 && rx.indexOf(')') < 0) {
-                        rx = '(' + rx + ')';
-                    }
-
                     // Highlight matches
                     value = value.replace(new RegExp(encodeHtml(rx), modifiers), function (result) {
                         count++;
