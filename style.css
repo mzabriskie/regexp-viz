@@ -219,8 +219,8 @@ mark.m9 {
     *zoom:1;
 }
 
-#toolbar label, #toolbar span {
-    text-shadow:1px 1px 1px #ffffff;
+#toolbar, #result {
+    text-shadow:0 1px #ffffff;
 }
 #toolbar span {
     float:right;
