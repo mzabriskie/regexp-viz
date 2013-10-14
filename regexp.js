@@ -13,7 +13,7 @@
         return div.get('html');
     }
 
-    var Config = new new Class({
+    var Config = {
         save: function () {
             localStorage.setItem('regexp', regexp.get('value'));
             localStorage.setItem('result', result.get('value'));
@@ -25,9 +25,9 @@
         read: function (name) {
             return localStorage.getItem(name);
         }
-    });
+    };
 
-    var App = new new Class({
+    new new Class({
         initialize: function () {
             document.html.addClass(Browser.name);
 
@@ -101,7 +101,7 @@
                     // Highlight matches
                     value = value.replace(new RegExp(encodeHtml(rx), modifiers), function (result) {
                         count++;
-                        var offset = 0,
+                        var offset,
                             index = 1;
 
                         // Highlight the entire result
